@@ -68,17 +68,21 @@ async function loadParticipants() {
 
   data.forEach((player, index) => {
 
-    let status = "waiting";
+    let greenLimit = 10;
 
-    if (data.length <= 10) {
-      status = "confirmed";
-    } else if (data.length === 12 && index < 12) {
-      status = "confirmed";
-    } else if (data.length === 14 && index < 14) {
-      status = "confirmed";
-    } else if (index < 10) {
-      status = "confirmed";
-    }
+if (data.length >= 10 && data.length <= 14 && data.length % 2 === 0) {
+  greenLimit = data.length;
+}
+
+if (data.length >= 10 && data.length <= 14 && data.length % 2 !== 0) {
+  greenLimit = data.length - 1;
+}
+
+if (data.length > 14) {
+  greenLimit = 14;
+}
+
+let status = index < greenLimit ? "confirmed" : "waiting";
 
     const colour =
       status === "confirmed"
