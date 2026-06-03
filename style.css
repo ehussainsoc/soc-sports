@@ -4,60 +4,110 @@
 
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
   background: #061b33;
   color: white;
+  min-height: 100vh;
+}
+
+.background {
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(circle at top left, rgba(0,176,80,0.35), transparent 35%),
+    radial-gradient(circle at bottom right, rgba(255,255,255,0.12), transparent 30%),
+    linear-gradient(135deg, #061b33 0%, #092b50 55%, #061b33 100%);
+  z-index: -1;
 }
 
 .app {
-  max-width: 1000px;
+  max-width: 1100px;
   margin: auto;
-  padding: 30px 16px;
+  padding: 28px 16px;
 }
 
-header {
-  text-align: center;
-  margin-bottom: 30px;
+.hero {
+  background: rgba(255,255,255,0.09);
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 24px;
+  padding: 26px;
+  margin-bottom: 28px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.25);
 }
 
-header h1 {
-  font-size: 42px;
+.logoBox {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.logoCircle {
+  width: 82px;
+  height: 82px;
+  border-radius: 50%;
+  background: white;
+  color: #061b33;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  font-size: 24px;
+  border: 5px solid #00b050;
+  box-shadow: 0 10px 30px rgba(0,176,80,0.35);
+}
+
+h1 {
   margin: 0;
-  color: #ffffff;
+  font-size: 44px;
+  letter-spacing: 1px;
 }
 
-header p {
-  color: #c9d6e2;
+.hero p {
+  margin: 8px 0 0;
+  color: #d7e4ef;
+  font-size: 16px;
 }
 
 .cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 22px;
 }
 
 .card {
   background: white;
   color: #061b33;
-  padding: 28px;
-  border-radius: 18px;
-  text-align: center;
+  padding: 30px;
+  border-radius: 24px;
   cursor: pointer;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+  box-shadow: 0 18px 45px rgba(0,0,0,0.3);
+  border-bottom: 6px solid #00b050;
+  transition: 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
 }
 
 .card h2 {
   margin-top: 0;
+  font-size: 26px;
+}
+
+.card p {
+  color: #526575;
 }
 
 .card button,
-form button {
+.bookingForm button {
+  width: 100%;
   background: #00b050;
   border: none;
   color: white;
-  padding: 13px 20px;
-  border-radius: 10px;
+  padding: 14px 20px;
+  border-radius: 12px;
   font-weight: bold;
+  font-size: 15px;
   cursor: pointer;
 }
 
@@ -65,42 +115,95 @@ form button {
   display: none;
 }
 
-#bookingSection {
+.panel {
   background: white;
   color: #061b33;
-  padding: 24px;
-  border-radius: 18px;
+  padding: 26px;
+  border-radius: 24px;
+  box-shadow: 0 18px 45px rgba(0,0,0,0.3);
 }
 
 .backBtn {
   background: #061b33;
   color: white;
   border: none;
-  padding: 10px 14px;
-  border-radius: 8px;
+  padding: 11px 16px;
+  border-radius: 10px;
   cursor: pointer;
+  margin-bottom: 18px;
 }
 
-form {
+.sessionHeader {
+  background: #f3f8fb;
+  padding: 18px;
+  border-radius: 18px;
+  border-left: 6px solid #00b050;
+  margin-bottom: 20px;
+}
+
+.sessionHeader h2 {
+  margin: 0;
+  font-size: 28px;
+}
+
+.sessionHeader p {
+  margin-bottom: 0;
+  color: #526575;
+}
+
+.bookingForm {
   display: grid;
   gap: 12px;
   margin: 20px 0;
+  background: #f7fafc;
+  padding: 18px;
+  border-radius: 18px;
+}
+
+.bookingForm h3 {
+  margin: 0 0 5px;
 }
 
 input {
-  padding: 14px;
-  border-radius: 10px;
-  border: 1px solid #ccc;
+  padding: 15px;
+  border-radius: 12px;
+  border: 1px solid #cfd8df;
+  font-size: 15px;
+}
+
+.legend {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+  margin: 20px 0;
+  color: #526575;
+}
+
+.dot {
+  display: inline-block;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  margin-right: 6px;
+}
+
+.green {
+  background: #00b050;
+}
+
+.orange {
+  background: #f39c12;
 }
 
 .player {
-  padding: 14px;
-  border-radius: 10px;
+  padding: 15px;
+  border-radius: 14px;
   margin-bottom: 10px;
   color: white;
   display: flex;
   justify-content: space-between;
   gap: 10px;
+  font-weight: bold;
 }
 
 .confirmed {
@@ -118,4 +221,15 @@ input {
   padding: 7px 10px;
   border-radius: 8px;
   cursor: pointer;
+}
+
+@media (max-width: 600px) {
+  .logoBox {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  h1 {
+    font-size: 34px;
+  }
 }
