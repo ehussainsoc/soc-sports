@@ -8,29 +8,47 @@
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
+  <div class="background"></div>
+
   <div class="app">
-    <header>
-      <h1>SOC SPORTS</h1>
-      <p>Staff Football Booking Portal</p>
+    <header class="hero">
+      <div class="logoBox">
+        <div class="logoCircle">SOC</div>
+        <div>
+          <h1>SOC SPORTS</h1>
+          <p>School of Coding Staff Football Booking Portal</p>
+        </div>
+      </div>
     </header>
 
-    <div id="sports" class="cards"></div>
+    <main>
+      <div id="sports" class="cards"></div>
 
-    <section id="bookingSection" class="hidden">
-      <button class="backBtn" onclick="goBack()">← Back</button>
-      <h2 id="sessionTitle"></h2>
-      <p id="sessionInfo"></p>
+      <section id="bookingSection" class="hidden panel">
+        <button class="backBtn" onclick="goBack()">← Back to sports</button>
 
-      <form id="bookingForm">
-        <input id="name" placeholder="Full name" required />
-        <input id="email" type="email" placeholder="Email address" required />
-        <input id="phone" placeholder="Phone number" required />
-        <button type="submit">Book My Place</button>
-      </form>
+        <div class="sessionHeader">
+          <h2 id="sessionTitle"></h2>
+          <p id="sessionInfo"></p>
+        </div>
 
-      <h3>Participants</h3>
-      <div id="participants"></div>
-    </section>
+        <form id="bookingForm" class="bookingForm">
+          <h3>Book your place</h3>
+          <input id="name" placeholder="Full name" required />
+          <input id="email" type="email" placeholder="Email address" required />
+          <input id="phone" placeholder="Phone number" required />
+          <button type="submit">Confirm Booking</button>
+        </form>
+
+        <div class="legend">
+          <span><b class="dot green"></b> Confirmed</span>
+          <span><b class="dot orange"></b> Waiting list</span>
+        </div>
+
+        <h3>Participants</h3>
+        <div id="participants"></div>
+      </section>
+    </main>
   </div>
 
   <script src="script.js"></script>
