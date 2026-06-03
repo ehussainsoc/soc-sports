@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SOC SPORTS</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+  <div class="app">
+    <header>
+      <h1>SOC SPORTS</h1>
+      <p>Staff Football Booking Portal</p>
+    </header>
+
+    <div id="sports" class="cards"></div>
+
+    <section id="bookingSection" class="hidden">
+      <button class="backBtn" onclick="goBack()">← Back</button>
+      <h2 id="sessionTitle"></h2>
+      <p id="sessionInfo"></p>
+
+      <form id="bookingForm">
+        <input id="name" placeholder="Full name" required />
+        <input id="email" type="email" placeholder="Email address" required />
+        <input id="phone" placeholder="Phone number" required />
+        <button type="submit">Book My Place</button>
+      </form>
+
+      <h3>Participants</h3>
+      <div id="participants"></div>
+    </section>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
