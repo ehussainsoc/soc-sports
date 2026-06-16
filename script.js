@@ -20,13 +20,26 @@ async function loadSessions() {
   sportsDiv.innerHTML = "";
 
   data.forEach(session => {
+    const image =
+      session.sport_type.toLowerCase().includes("women")
+        ? "womensfootball.png"
+        : "mensfootball.png";
+
+    const ukDate = new Date(session.game_date).toLocaleDateString("en-GB");
+
     sportsDiv.innerHTML += `
       <div class="card">
-        <h2>${session.sport_type}</h2>
-        <p>${session.game_date}</p>
-        <button onclick="openSession(${session.id})">
-          View Session
-        </button>
+        <img src="${image}" class="cardImg" alt="${session.sport_type}">
+        <div class="cardContent">
+          <div class="ballIcon">⚽</div>
+          <div>
+            <h2>${session.sport_type}</h2>
+            <p>${ukDate}</p>
+          </div>
+          <button onclick="openSession(${session.id})">
+            View Session
+          </button>
+        </div>
       </div>
     `;
   });
