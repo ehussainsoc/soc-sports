@@ -1,11 +1,6 @@
 const SUPABASE_URL = "https://jojbseebuydixvsrfsnd.supabase.co";
 const SUPABASE_KEY = "sb_publishable_OTd0hQkBCX5SYgJkTXAXZQ_FLtTXAER";
-const statusText =
-  status === "confirmed"
-    ? "CONFIRMED"
-    : status === "waiting"
-    ? "WAITING LIST"
-    : "AWAITING MINIMUM NUMBERS";
+
 const supabaseClient = supabase.createClient(
   SUPABASE_URL,
   SUPABASE_KEY
@@ -27,24 +22,24 @@ async function loadSessions() {
   data.forEach(session => {
     const image =
       session.sport_type.toLowerCase().includes("women")
-        ? "womensfootball.png"
-        : "mensfootball.png";
+        ? "womens-football.jpg"
+        : "mens-football.jpg";
 
     const ukDate = new Date(session.game_date).toLocaleDateString("en-GB");
 
     sportsDiv.innerHTML += `
-  <div class="card" onclick="openSession(${session.id})">
-    <img src="${image}" class="cardImg" alt="${session.sport_type}">
-    <div class="cardContent">
-      <div class="ballIcon">⚽</div>
-      <div>
-        <h2>${session.sport_type}</h2>
-        <p>${ukDate}</p>
+      <div class="card" onclick="openSession(${session.id})">
+        <img src="${image}" class="cardImg" alt="${session.sport_type}">
+        <div class="cardContent">
+          <div class="ballIcon">⚽</div>
+          <div>
+            <h2>${session.sport_type}</h2>
+            <p>${ukDate}</p>
+          </div>
+          <span class="viewTag">View Session</span>
+        </div>
       </div>
-      <span class="viewTag">View Session</span>
-    </div>
-  </div>
-`;
+    `;
   });
 }
 
@@ -60,11 +55,11 @@ async function openSession(id) {
     .eq("id", id)
     .single();
 
-  document.getElementById("sessionTitle").innerText =
-    session.sport_type;
+  const ukDate = new Date(session.game_date).toLocaleDateString("en-GB");
 
+  document.getElementById("sessionTitle").innerText = session.sport_type;
   document.getElementById("sessionInfo").innerText =
-    `${session.game_date} ${session.game_time}`;
+    `${ukDate} at ${session.game_time}`;
 
   loadParticipants();
 }
@@ -88,60 +83,63 @@ async function loadParticipants() {
   const hoursUntilGame = (gameDateTime - now) / (1000 * 60 * 60);
   const canCancel = hoursUntilGame > 24;
 
-  let greenLimit = 0;
-
-// Less than 10 players
-if (data.length < 10) {
-  statusText = `Awaiting ${10 - data.length} more player${10 - data.length === 1 ? '' : 's'}`;
-}
-
-else if (data.length === 11 && index >= 10) {
-  statusText = "Awaiting 1 more player to create even teams";
-}
-
-else if (data.length === 13 && index >= 12) {
-  statusText = "Awaiting 1 more player to create even teams";
-}
-
-else if (data.length > 14 && index >= 14) {
-  statusText = "Waiting List";
-}
-
-else {
-  statusText = "Confirmed";
-}
-
   const container = document.getElementById("participants");
   container.innerHTML = "";
 
-  data.forEach((player, index) => {
-    let status = "";
+  let greenLimit = 0;
 
-if (data.length < 10) {
-  status = "awaiting";
-} else {
-  status = index < greenLimit
-    ? "confirmed"
-    : "waiting";
-}
+  if (data.length < 10) {
+    greenLimit = 0;
+  } else if (data.length === 10) {
+    greenLimit = 10;
+  } else if (data.length === 11) {
+    greenLimit = 10;
+  } else if (data.length === 12) {
+    greenLimit = 12;
+  } else if (data.length === 13) {
+    greenLimit = 12;
+  } else if (data.length >= 14) {
+    greenLimit = 14;
+  }
+
+  data.forEach((player, index) => {
+    let status = index < greenLimit ? "confirmed" : "waiting";
+    let statusText = "";
+
+    if (data.length < 10) {
+      status = "waiting";
+      const needed = 10 - data.length;
+      statusText = `Awaiting minimum numbers - ${needed} more player${needed === 1 ? "" : "s"} needed`;
+    } else if ((data.length === 11 && index >= 10) || (data.length === 13 && index >= 12)) {
+      status = "waiting";
+      statusText = "Awaiting 1 more player to create even teams";
+    } else if (data.length > 14 && index >= 14) {
+      status = "waiting";
+      statusText = "Waiting List";
+    } else {
+      status = "confirmed";
+      statusText = "Confirmed";
+    }
+
     const colour = status === "confirmed" ? "confirmed" : "waiting";
 
     container.innerHTML += `
       <div class="player ${colour}">
         <div>
           <strong>${player.name}</strong><br>
-          <small>${status.toUpperCase()}</small>
+          <small>${statusText}</small>
         </div>
 
         ${
           canCancel
-            ? `<button class="cancelBtn" onclick="cancelBooking(${player.id}, '${player.email}')">Remove</button>`
+            ? `<button class="cancelBtn" onclick="event.stopPropagation(); cancelBooking(${player.id}, '${player.email}')">Remove</button>`
             : `<small>Locked</small>`
         }
       </div>
     `;
   });
 }
+
 async function cancelBooking(bookingId, bookingEmail) {
   const enteredEmail = prompt("Please enter your email to remove your booking:");
 
@@ -162,24 +160,17 @@ async function cancelBooking(bookingId, bookingEmail) {
     .eq("id", bookingId);
 
   alert("Your booking has been removed.");
-
   loadParticipants();
 }
 
 document
   .getElementById("bookingForm")
   .addEventListener("submit", async e => {
-
     e.preventDefault();
 
-    const name =
-      document.getElementById("name").value;
-
-    const email =
-      document.getElementById("email").value;
-
-    const phone =
-      document.getElementById("phone").value;
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const phone = document.getElementById("phone").value;
 
     await supabaseClient
       .from("bookings")
@@ -193,7 +184,6 @@ document
       ]);
 
     document.getElementById("bookingForm").reset();
-
     loadParticipants();
   });
 
