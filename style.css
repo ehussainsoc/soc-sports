@@ -173,7 +173,15 @@ input {
   cursor: pointer;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 900px) {
+  .cards {
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.card {
+  width: 100% !important;
+}
   .viewTag {
     grid-column: 1 / -1 !important;
     display: block !important;
