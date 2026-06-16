@@ -160,21 +160,35 @@ input {
 .confirmed { background: #00b050; }
 .waiting { background: #f39c12; }
 
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
+  .cards {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 24px !important;
+    width: 100% !important;
+  }
+
+  .card {
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  .cardImg {
+    height: 190px !important;
+  }
+
   .cardContent {
-    grid-template-columns: 50px 1fr !important;
-    grid-template-rows: auto auto !important;
+    display: grid !important;
+    grid-template-columns: 45px 1fr !important;
+    gap: 12px !important;
+    padding: 18px !important;
   }
 
   .card button {
-    grid-column: 1 / -1 !important;
     display: block !important;
+    grid-column: 1 / -1 !important;
     width: 100% !important;
-    background: #00b050 !important;
-    color: white !important;
-    font-size: 18px !important;
     padding: 16px !important;
-    border-radius: 12px !important;
     margin-top: 12px !important;
   }
 }
