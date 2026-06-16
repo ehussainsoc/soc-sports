@@ -182,10 +182,19 @@ input {
 .card {
   width: 100% !important;
 }
+  .cardContent {
+    min-height: 170px !important;
+    padding-bottom: 22px !important;
+  }
   .viewTag {
-    grid-column: 1 / -1 !important;
     display: block !important;
+    grid-column: 1 / -1 !important;
     width: 100% !important;
-    margin-top: 10px !important;
+    background: #00b050 !important;
+    color: white !important;
+    padding: 16px !important;
+    border-radius: 12px !important;
+    text-align: center !important;
+    margin-top: 14px !important;
   }
 }
