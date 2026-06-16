@@ -161,47 +161,34 @@ input {
 .waiting { background: #f39c12; }
 
 @media (max-width: 768px) {
-
-  .cards {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-
   .card {
-    height: auto;
-  }
-
-  .cardImg {
-    height: 140px;
+    height: auto !important;
   }
 
   .cardContent {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    padding: 12px;
-  }
-
-  .ballIcon {
-    font-size: 30px;
-  }
-
-  .cardContent > div {
-    flex: 1;
-    min-width: 150px;
+    display: grid !important;
+    grid-template-columns: 42px 1fr !important;
+    padding: 14px 16px !important;
   }
 
   .card button {
-    width: 100%;
-    margin-top: 5px;
-    padding: 14px;
+    grid-column: 1 / -1 !important;
+    width: 100% !important;
+    display: block !important;
+    margin-top: 10px !important;
+    padding: 15px !important;
+    height: auto !important;
   }
 
-  .hero p {
-    font-size: 18px;
+  .ballIcon {
+    font-size: 34px !important;
   }
 
-  .logoImg {
-    width: 90px;
+  .card h2 {
+    font-size: 24px !important;
+  }
+
+  .card p {
+    font-size: 20px !important;
   }
 }
