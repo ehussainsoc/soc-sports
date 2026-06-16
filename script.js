@@ -22,8 +22,8 @@ async function loadSessions() {
   data.forEach(session => {
     const image =
       session.sport_type.toLowerCase().includes("women")
-        ? "womens-football.jpg"
-        : "mens-football.jpg";
+        ? "womensfootball.png"
+        : "mensfootball.png";
 
     const ukDate = new Date(session.game_date).toLocaleDateString("en-GB");
 
