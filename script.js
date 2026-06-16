@@ -92,32 +92,23 @@ async function loadParticipants() {
 
 // Less than 10 players
 if (data.length < 10) {
-  greenLimit = 0;
+  statusText = `Awaiting ${10 - data.length} more player${10 - data.length === 1 ? '' : 's'}`;
 }
 
-// Exactly 10
-else if (data.length === 10) {
-  greenLimit = 10;
+else if (data.length === 11 && index >= 10) {
+  statusText = "Awaiting 1 more player to create even teams";
 }
 
-// 11
-else if (data.length === 11) {
-  greenLimit = 10;
+else if (data.length === 13 && index >= 12) {
+  statusText = "Awaiting 1 more player to create even teams";
 }
 
-// Even numbers between 12 and 14
-else if (data.length === 12 || data.length === 14) {
-  greenLimit = data.length;
+else if (data.length > 14 && index >= 14) {
+  statusText = "Waiting List";
 }
 
-// 13
-else if (data.length === 13) {
-  greenLimit = 12;
-}
-
-// More than 14
-else if (data.length > 14) {
-  greenLimit = 14;
+else {
+  statusText = "Confirmed";
 }
 
   const container = document.getElementById("participants");
