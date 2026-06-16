@@ -14,9 +14,12 @@ body {
   padding: 30px 16px;
 }
 
-.hero {
-  text-align: center;
-  margin-bottom: 35px;
+.hero{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:35px;
+  margin-bottom:25px;
 }
 
 .logoBox {
