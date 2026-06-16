@@ -1,6 +1,11 @@
 const SUPABASE_URL = "https://jojbseebuydixvsrfsnd.supabase.co";
 const SUPABASE_KEY = "sb_publishable_OTd0hQkBCX5SYgJkTXAXZQ_FLtTXAER";
-
+const statusText =
+  status === "confirmed"
+    ? "CONFIRMED"
+    : status === "waiting"
+    ? "WAITING LIST"
+    : "AWAITING MINIMUM NUMBERS";
 const supabaseClient = supabase.createClient(
   SUPABASE_URL,
   SUPABASE_KEY
