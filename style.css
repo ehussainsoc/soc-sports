@@ -98,6 +98,11 @@ h1 {
   font-size: 18px;
   color: #061b33;
 }
+.sectionTitle{
+  text-align:center;
+  color:#9fb4c9;
+  margin-bottom:25px;
+}
 
 .card button {
   background: #00b050;
