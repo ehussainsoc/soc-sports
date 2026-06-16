@@ -19,7 +19,15 @@ body {
     linear-gradient(135deg, #061b33 0%, #092b50 55%, #061b33 100%);
   z-index: -1;
 }
-
+.logoImg {
+  width: 92px;
+  height: 92px;
+  object-fit: contain;
+  background: white;
+  border-radius: 50%;
+  padding: 8px;
+  border: 5px solid #00b050;
+}
 .app {
   max-width: 1100px;
   margin: auto;
