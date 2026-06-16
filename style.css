@@ -9,55 +9,61 @@ body {
 }
 
 .app {
-  max-width: 1180px;
+  max-width: 1000px;
   margin: auto;
   padding: 30px 16px;
 }
 
-.hero{
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  gap:35px;
-  margin-bottom:25px;
+.hero {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 28px;
+  margin-bottom: 22px;
 }
 
-.logoBox {
-  display: block;
-}
-
-.awaiting {
-  background: #f39c12;
-}
 .logoImg {
-  width: 120px;
+  width: 130px;
   height: auto;
   object-fit: contain;
-  margin-bottom: 18px;
 }
 
-h1 {
-  display: none;
+.heroText {
+  border-left: 2px solid rgba(255,255,255,.45);
+  padding-left: 24px;
 }
 
-.hero p {
-  margin: 0;
-  font-size: 26px;
-  font-weight: 400;
-}
-
-.hero p::before {
-  content: "School of Coding & AI";
+.heroText h1 {
   display: block;
-  font-weight: 800;
-  margin-bottom: 4px;
+  margin: 0;
+  font-size: 28px;
+  font-weight: 900;
 }
+
+.heroText p {
+  margin: 4px 0 0;
+  font-size: 25px;
+}
+
+.tagline {
+  text-align: center;
+  font-size: 30px;
+  margin: 28px 0 28px;
+  color: white;
+}
+
+.sectionTitle {
+  text-align: center;
+  color: #9fb4c9;
+  margin: 0 0 18px;
+}
+
 .cards {
-  max-width: 980px;
+  max-width: 880px;
   margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
+  gap: 26px;
 }
 
 .card {
@@ -65,59 +71,53 @@ h1 {
   color: #061b33;
   border-radius: 18px;
   overflow: hidden;
-  padding: 0;
   border: none;
-  height: 235px;
+  cursor: pointer;
+  height: 215px;
 }
 
 .cardImg {
   width: 100%;
-  height: 130px;
+  height: 125px;
   object-fit: cover;
   object-position: center 25%;
+  display: block;
 }
 
 .cardContent {
   height: 90px;
   display: grid;
-  grid-template-columns: 52px 1fr auto;
+  grid-template-columns: 44px 1fr auto;
   align-items: center;
   gap: 10px;
-  padding: 12px 18px;
+  padding: 12px 14px;
 }
 
 .ballIcon {
-  font-size: 36px;
+  font-size: 34px;
 }
 
 .card h2 {
   margin: 0;
-  font-size: 19px;
+  font-size: 18px;
   font-weight: 900;
 }
 
 .card p {
   margin: 2px 0 0;
-  font-size: 18px;
+  font-size: 17px;
   color: #061b33;
 }
-.sectionTitle{
-  text-align:center;
-  color:#9fb4c9;
-  margin-bottom:25px;
-}
 
-.card button {
+.viewTag {
   background: #00b050;
   color: white;
-  border: none;
+  padding: 13px 20px;
   border-radius: 8px;
-  padding: 15px 22px;
   font-weight: 800;
-  cursor: pointer;
+  text-align: center;
   white-space: nowrap;
 }
-
 
 .hidden { display: none; }
 
@@ -128,25 +128,24 @@ h1 {
   border-radius: 20px;
 }
 
+.backBtn,
+.bookingForm button,
+.cancelBtn {
+  cursor: pointer;
+}
+
 .backBtn {
   background: #061b33;
   color: white;
   border: none;
   padding: 11px 16px;
   border-radius: 10px;
-  cursor: pointer;
 }
 
 .bookingForm {
   display: grid;
   gap: 12px;
   margin: 20px 0;
-}
-.tagline{
-  text-align:center;
-  font-size:32px;
-  margin:30px 0;
-  color:white;
 }
 
 input {
@@ -175,43 +174,58 @@ input {
 }
 
 .confirmed { background: #00b050; }
-.waiting { background: #f39c12; }
-
-.viewTag {
-  background: #00b050;
-  color: white;
-  padding: 12px 18px;
-  border-radius: 10px;
-  font-weight: 800;
-  text-align: center;
-}
-
-.card {
-  cursor: pointer;
-}
+.waiting, .awaiting { background: #f39c12; }
 
 @media screen and (max-width: 900px) {
-  .cards {
-  display: flex !important;
-  flex-direction: column !important;
-}
-
-.card {
-  width: 100% !important;
-}
-  .cardContent {
-    min-height: 170px !important;
-    padding-bottom: 22px !important;
+  .hero {
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
   }
-  .viewTag {
-    display: block !important;
-    grid-column: 1 / -1 !important;
+
+  .heroText {
+    border-left: none;
+    padding-left: 0;
+  }
+
+  .heroText h1 {
+    font-size: 30px;
+  }
+
+  .heroText p {
+    font-size: 24px;
+  }
+
+  .tagline {
+    font-size: 22px;
+  }
+
+  .cards {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 24px;
+    max-width: 100%;
+  }
+
+  .card {
     width: 100% !important;
-    background: #00b050 !important;
-    color: white !important;
-    padding: 16px !important;
-    border-radius: 12px !important;
-    text-align: center !important;
-    margin-top: 14px !important;
+    height: auto !important;
+  }
+
+  .cardImg {
+    height: 190px;
+  }
+
+  .cardContent {
+    height: auto;
+    grid-template-columns: 48px 1fr;
+    padding: 18px;
+  }
+
+  .viewTag {
+    grid-column: 1 / -1;
+    width: 100%;
+    margin-top: 12px;
+    padding: 16px;
   }
 }
