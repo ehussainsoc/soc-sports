@@ -1,10 +1,7 @@
 const SUPABASE_URL = "https://jojbseebuydixvsrfsnd.supabase.co";
 const SUPABASE_KEY = "sb_publishable_OTd0hQkBCX5SYgJkTXAXZQ_FLtTXAER";
 
-const supabaseClient = supabase.createClient(
-  SUPABASE_URL,
-  SUPABASE_KEY
-);
+const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
 let currentSession = null;
 
@@ -20,10 +17,9 @@ async function loadSessions() {
   sportsDiv.innerHTML = "";
 
   data.forEach(session => {
-    const image =
-      session.sport_type.toLowerCase().includes("women")
-        ? "womensfootball.png"
-        : "mensfootball.png";
+    const image = session.sport_type.toLowerCase().includes("women")
+      ? "womensfootball.png"
+      : "mensfootball.png";
 
     const ukDate = new Date(session.game_date).toLocaleDateString("en-GB");
 
@@ -58,8 +54,7 @@ async function openSession(id) {
   const ukDate = new Date(session.game_date).toLocaleDateString("en-GB");
 
   document.getElementById("sessionTitle").innerText = session.sport_type;
-  document.getElementById("sessionInfo").innerText =
-    `${ukDate} at ${session.game_time}`;
+  document.getElementById("sessionInfo").innerText = `${ukDate} at ${session.game_time}`;
 
   loadParticipants();
 }
@@ -88,19 +83,12 @@ async function loadParticipants() {
 
   let greenLimit = 0;
 
-  if (data.length < 10) {
-    greenLimit = 0;
-  } else if (data.length === 10) {
-    greenLimit = 10;
-  } else if (data.length === 11) {
-    greenLimit = 10;
-  } else if (data.length === 12) {
-    greenLimit = 12;
-  } else if (data.length === 13) {
-    greenLimit = 12;
-  } else if (data.length >= 14) {
-    greenLimit = 14;
-  }
+  if (data.length < 10) greenLimit = 0;
+  else if (data.length === 10) greenLimit = 10;
+  else if (data.length === 11) greenLimit = 10;
+  else if (data.length === 12) greenLimit = 12;
+  else if (data.length === 13) greenLimit = 12;
+  else if (data.length >= 14) greenLimit = 14;
 
   data.forEach((player, index) => {
     let status = index < greenLimit ? "confirmed" : "waiting";
@@ -151,7 +139,6 @@ async function cancelBooking(bookingId, bookingEmail) {
   }
 
   const confirmRemove = confirm("Are you sure you want to remove your booking?");
-
   if (!confirmRemove) return;
 
   await supabaseClient
@@ -163,29 +150,39 @@ async function cancelBooking(bookingId, bookingEmail) {
   loadParticipants();
 }
 
-document
-  .getElementById("bookingForm")
-  .addEventListener("submit", async e => {
-    e.preventDefault();
+document.getElementById("bookingForm").addEventListener("submit", async e => {
+  e.preventDefault();
 
-    const name = document.getElementById("name").value;
-    const email = document.getElementById("email").value;
-    const phone = document.getElementById("phone").value;
+  const name = document.getElementById("name").value.trim();
+  const email = document.getElementById("email").value.toLowerCase().trim();
+  const phone = document.getElementById("phone").value.trim();
 
-    await supabaseClient
-      .from("bookings")
-      .insert([
-        {
-          session_id: currentSession,
-          name,
-          email,
-          phone
-        }
-      ]);
+  const { data: existingBooking } = await supabaseClient
+    .from("bookings")
+    .select("*")
+    .eq("session_id", currentSession)
+    .eq("email", email)
+    .eq("cancelled", false);
 
-    document.getElementById("bookingForm").reset();
-    loadParticipants();
-  });
+  if (existingBooking.length > 0) {
+    alert("You have already booked a place for this session.");
+    return;
+  }
+
+  await supabaseClient
+    .from("bookings")
+    .insert([
+      {
+        session_id: currentSession,
+        name,
+        email,
+        phone
+      }
+    ]);
+
+  document.getElementById("bookingForm").reset();
+  loadParticipants();
+});
 
 function goBack() {
   document.getElementById("sports").style.display = "grid";
