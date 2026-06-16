@@ -46,11 +46,12 @@ h1 {
   font-weight: 800;
   margin-bottom: 4px;
 }
-
 .cards {
+  max-width: 980px;
+  margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 36px;
+  gap: 32px;
 }
 
 .card {
@@ -58,40 +59,41 @@ h1 {
   color: #061b33;
   border-radius: 18px;
   overflow: hidden;
-  box-shadow: none;
   padding: 0;
   border: none;
+  height: 235px;
 }
 
 .cardImg {
   width: 100%;
-  height: 170px;
+  height: 145px;
   object-fit: cover;
+  object-position: center;
   display: block;
 }
 
 .cardContent {
+  height: 90px;
   display: grid;
-  grid-template-columns: auto 1fr auto;
+  grid-template-columns: 52px 1fr auto;
   align-items: center;
-  gap: 14px;
-  padding: 16px 18px;
+  gap: 10px;
+  padding: 12px 18px;
 }
 
-.cardContent::before {
-  content: "⚽";
-  font-size: 46px;
+.ballIcon {
+  font-size: 36px;
 }
 
 .card h2 {
   margin: 0;
-  font-size: 22px;
+  font-size: 19px;
   font-weight: 900;
 }
 
 .card p {
   margin: 2px 0 0;
-  font-size: 20px;
+  font-size: 18px;
   color: #061b33;
 }
 
@@ -99,11 +101,13 @@ h1 {
   background: #00b050;
   color: white;
   border: none;
-  border-radius: 9px;
-  padding: 18px 28px;
+  border-radius: 8px;
+  padding: 15px 22px;
   font-weight: 800;
   cursor: pointer;
+  white-space: nowrap;
 }
+
 
 .hidden { display: none; }
 
