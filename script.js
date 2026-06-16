@@ -83,25 +83,51 @@ async function loadParticipants() {
   const hoursUntilGame = (gameDateTime - now) / (1000 * 60 * 60);
   const canCancel = hoursUntilGame > 24;
 
-  let greenLimit = 10;
+  let greenLimit = 0;
 
-  if (data.length >= 10 && data.length <= 14 && data.length % 2 === 0) {
-    greenLimit = data.length;
-  }
+// Less than 10 players
+if (data.length < 10) {
+  greenLimit = 0;
+}
 
-  if (data.length >= 10 && data.length <= 14 && data.length % 2 !== 0) {
-    greenLimit = data.length - 1;
-  }
+// Exactly 10
+else if (data.length === 10) {
+  greenLimit = 10;
+}
 
-  if (data.length > 14) {
-    greenLimit = 14;
-  }
+// 11
+else if (data.length === 11) {
+  greenLimit = 10;
+}
+
+// Even numbers between 12 and 14
+else if (data.length === 12 || data.length === 14) {
+  greenLimit = data.length;
+}
+
+// 13
+else if (data.length === 13) {
+  greenLimit = 12;
+}
+
+// More than 14
+else if (data.length > 14) {
+  greenLimit = 14;
+}
 
   const container = document.getElementById("participants");
   container.innerHTML = "";
 
   data.forEach((player, index) => {
-    const status = index < greenLimit ? "confirmed" : "waiting";
+    let status = "";
+
+if (data.length < 10) {
+  status = "awaiting";
+} else {
+  status = index < greenLimit
+    ? "confirmed"
+    : "waiting";
+}
     const colour = status === "confirmed" ? "confirmed" : "waiting";
 
     container.innerHTML += `
