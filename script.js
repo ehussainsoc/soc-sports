@@ -72,41 +72,76 @@ async function loadParticipants() {
     .eq("cancelled", false)
     .order("created_at");
 
-  const container =
-    document.getElementById("participants");
+  const { data: session } = await supabaseClient
+    .from("sessions")
+    .select("*")
+    .eq("id", currentSession)
+    .single();
 
+  const gameDateTime = new Date(`${session.game_date}T${session.game_time}`);
+  const now = new Date();
+  const hoursUntilGame = (gameDateTime - now) / (1000 * 60 * 60);
+  const canCancel = hoursUntilGame > 24;
+
+  let greenLimit = 10;
+
+  if (data.length >= 10 && data.length <= 14 && data.length % 2 === 0) {
+    greenLimit = data.length;
+  }
+
+  if (data.length >= 10 && data.length <= 14 && data.length % 2 !== 0) {
+    greenLimit = data.length - 1;
+  }
+
+  if (data.length > 14) {
+    greenLimit = 14;
+  }
+
+  const container = document.getElementById("participants");
   container.innerHTML = "";
 
   data.forEach((player, index) => {
-
-    let greenLimit = 10;
-
-if (data.length >= 10 && data.length <= 14 && data.length % 2 === 0) {
-  greenLimit = data.length;
-}
-
-if (data.length >= 10 && data.length <= 14 && data.length % 2 !== 0) {
-  greenLimit = data.length - 1;
-}
-
-if (data.length > 14) {
-  greenLimit = 14;
-}
-
-let status = index < greenLimit ? "confirmed" : "waiting";
-
-    const colour =
-      status === "confirmed"
-        ? "confirmed"
-        : "waiting";
+    const status = index < greenLimit ? "confirmed" : "waiting";
+    const colour = status === "confirmed" ? "confirmed" : "waiting";
 
     container.innerHTML += `
       <div class="player ${colour}">
-        <span>${player.name}</span>
-        <span>${status.toUpperCase()}</span>
+        <div>
+          <strong>${player.name}</strong><br>
+          <small>${status.toUpperCase()}</small>
+        </div>
+
+        ${
+          canCancel
+            ? `<button class="cancelBtn" onclick="cancelBooking(${player.id}, '${player.email}')">Remove</button>`
+            : `<small>Locked</small>`
+        }
       </div>
     `;
   });
+}
+async function cancelBooking(bookingId, bookingEmail) {
+  const enteredEmail = prompt("Please enter your email to remove your booking:");
+
+  if (!enteredEmail) return;
+
+  if (enteredEmail.toLowerCase().trim() !== bookingEmail.toLowerCase().trim()) {
+    alert("Email does not match this booking.");
+    return;
+  }
+
+  const confirmRemove = confirm("Are you sure you want to remove your booking?");
+
+  if (!confirmRemove) return;
+
+  await supabaseClient
+    .from("bookings")
+    .update({ cancelled: true })
+    .eq("id", bookingId);
+
+  alert("Your booking has been removed.");
+
+  loadParticipants();
 }
 
 document
