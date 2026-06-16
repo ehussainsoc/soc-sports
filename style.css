@@ -134,6 +134,12 @@ h1 {
   gap: 12px;
   margin: 20px 0;
 }
+.tagline{
+  text-align:center;
+  font-size:32px;
+  margin:30px 0;
+  color:white;
+}
 
 input {
   padding: 15px;
