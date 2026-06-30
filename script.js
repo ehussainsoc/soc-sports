@@ -5,7 +5,7 @@ const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
 let currentSession = null;
 
-loadSessions();
+let currentSession = null;
 
 async function loadSessions() {
   const { data } = await supabaseClient
