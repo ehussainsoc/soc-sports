@@ -1,334 +1,304 @@
-* { box-sizing: border-box; }
-
-body {
-  margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-  background: #0b2d4a;
-  color: white;
-  min-height: 100vh;
+*{
+    box-sizing:border-box;
 }
 
-.app {
-  max-width: 1000px;
-  margin: auto;
-  padding: 30px 16px;
+body{
+    margin:0;
+    font-family:Arial,Helvetica,sans-serif;
+    background:#0b2d4a;
+    color:#fff;
+    min-height:100vh;
 }
 
-.hero {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 28px;
-  margin-bottom: 22px;
+.app{
+    max-width:1100px;
+    margin:auto;
+    padding:30px 20px;
 }
 
-.logoImg {
-  width: 130px;
-  height: auto;
-  object-fit: contain;
+/* ================= HERO ================= */
+
+.hero{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:28px;
+    margin-bottom:20px;
 }
 
-.heroText {
-  border-left: 2px solid rgba(255,255,255,.45);
-  padding-left: 24px;
+.logoImg{
+    width:130px;
+    height:auto;
 }
 
-.heroText h1 {
-  display: block;
-  margin: 0;
-  font-size: 28px;
-  font-weight: 900;
+.heroText{
+    border-left:2px solid rgba(255,255,255,.45);
+    padding-left:25px;
 }
 
-.heroText p {
-  margin: 4px 0 0;
-  font-size: 25px;
+.heroText h1{
+    margin:0;
+    font-size:30px;
+    font-weight:900;
 }
 
-.tagline {
-  text-align: center;
-  font-size: 30px;
-  margin: 28px 0 28px;
-  color: white;
+.heroText p{
+    margin:5px 0 0;
+    font-size:22px;
 }
 
-.sectionTitle {
-  text-align: center;
-  color: #9fb4c9;
-  margin: 0 0 18px;
+.tagline{
+    text-align:center;
+    font-size:30px;
+    margin:35px 0;
 }
 
-.cards {
-  max-width: 880px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 26px;
+.sectionTitle{
+    text-align:center;
+    color:#a6bdd4;
+    margin-bottom:25px;
 }
 
-.card {
-  background: white;
-  color: #061b33;
-  border-radius: 18px;
-  overflow: hidden;
-  border: none;
-  cursor: pointer;
-  height: 215px;
+/* ================= LANDING PAGE ================= */
+
+.sportLanding{
+    max-width:950px;
+    margin:auto;
 }
 
-.cardImg {
-  width: 100%;
-  height: 125px;
-  object-fit: cover;
-  object-position: center 25%;
-  display: block;
+.sportOptions{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:25px;
 }
 
-.cardContent {
-  height: 90px;
-  display: grid;
-  grid-template-columns: 44px 1fr auto;
-  align-items: center;
-  gap: 10px;
-  padding: 12px 14px;
+.sportOption{
+    background:#fff;
+    color:#061b33;
+    border-radius:18px;
+    padding:35px 20px;
+    text-align:center;
+    cursor:pointer;
+    transition:.25s;
+    box-shadow:0 10px 25px rgba(0,0,0,.2);
 }
 
-.ballIcon {
-  font-size: 34px;
+.sportOption:hover{
+    transform:translateY(-6px);
 }
 
-.card h2 {
-  margin: 0;
-  font-size: 18px;
-  font-weight: 900;
+.sportIcon{
+    font-size:60px;
+    margin-bottom:12px;
 }
 
-.card p {
-  margin: 2px 0 0;
-  font-size: 17px;
-  color: #061b33;
+.sportOption h2{
+    margin:0;
+    font-size:28px;
 }
 
-.viewTag {
-  background: #00b050;
-  color: white;
-  padding: 13px 20px;
-  border-radius: 8px;
-  font-weight: 800;
-  text-align: center;
-  white-space: nowrap;
+.sportOption p{
+    margin-top:10px;
+    color:#61778a;
 }
 
-.hidden { display: none; }
-
-.panel {
-  background: white;
-  color: #061b33;
-  padding: 26px;
-  border-radius: 20px;
+.comingSoon{
+    opacity:.55;
+    cursor:not-allowed;
 }
 
-.backBtn,
-.bookingForm button,
-.cancelBtn {
-  cursor: pointer;
+/* ================= FOOTBALL CARDS ================= */
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:28px;
 }
 
-.backBtn {
-  background: #061b33;
-  color: white;
-  border: none;
-  padding: 11px 16px;
-  border-radius: 10px;
+.card{
+    background:#fff;
+    border-radius:18px;
+    overflow:hidden;
+    color:#061b33;
+    cursor:pointer;
+    box-shadow:0 8px 20px rgba(0,0,0,.2);
 }
 
-.bookingForm {
-  display: grid;
-  gap: 12px;
-  margin: 20px 0;
+.cardImg{
+    width:100%;
+    height:165px;
+    object-fit:cover;
+    object-position:center 25%;
+    display:block;
 }
 
-input {
-  padding: 15px;
-  border-radius: 12px;
-  border: 1px solid #cfd8df;
+.cardContent{
+    padding:18px;
+    display:grid;
+    grid-template-columns:55px 1fr auto;
+    align-items:center;
+    gap:15px;
 }
 
-.bookingForm button {
-  background: #00b050;
-  color: white;
-  border: none;
-  padding: 14px;
-  border-radius: 12px;
-  font-weight: 800;
+.ballIcon{
+    font-size:40px;
 }
 
-.player {
-  padding: 15px;
-  border-radius: 14px;
-  margin-bottom: 10px;
-  color: white;
-  display: flex;
-  justify-content: space-between;
-  font-weight: bold;
+.card h2{
+    margin:0;
+    font-size:22px;
+    font-weight:900;
 }
 
-.confirmed { background: #00b050; }
-.waiting, .awaiting { background: #f39c12; }
-
-@media screen and (max-width: 900px) {
-  .hero {
-    flex-direction: column;
-    gap: 12px;
-    text-align: center;
-  }
-
-  .heroText {
-    border-left: none;
-    padding-left: 0;
-  }
-
-  .heroText h1 {
-    font-size: 30px;
-  }
-
-  .heroText p {
-    font-size: 24px;
-  }
-
-  .tagline {
-    font-size: 22px;
-  }
-
-  .cards {
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 24px;
-    max-width: 100%;
-  }
-
-  .card {
-    width: 100% !important;
-    height: auto !important;
-  }
-
-  .cardImg {
-    height: 190px;
-  }
-
-  .cardContent {
-    height: auto;
-    grid-template-columns: 48px 1fr;
-    padding: 18px;
-  }
-
-  .viewTag {
-    grid-column: 1 / -1;
-    width: 100%;
-    margin-top: 12px;
-    padding: 16px;
-  }
-  .sportLanding {
-  max-width: 900px;
-  margin: 0 auto;
+.card p{
+    margin-top:5px;
+    color:#061b33;
+    font-size:18px;
 }
 
-.sportOptions {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 22px;
+.viewTag{
+    background:#00b050;
+    color:#fff;
+    padding:14px 22px;
+    border-radius:10px;
+    font-weight:800;
+    white-space:nowrap;
 }
 
-.sportOption {
-  background: white;
-  color: #061b33;
-  border-radius: 18px;
-  padding: 28px 20px;
-  text-align: center;
-  cursor: pointer;
+/* ================= BOOKING PAGE ================= */
+
+.hidden{
+    display:none;
 }
 
-.sportIcon {
-  font-size: 52px;
-  margin-bottom: 12px;
+.panel{
+    background:#fff;
+    color:#061b33;
+    border-radius:20px;
+    padding:30px;
 }
 
-.sportOption h2 {
-  margin: 0;
-  font-size: 24px;
+.backBtn{
+    background:#061b33;
+    color:#fff;
+    border:none;
+    padding:12px 18px;
+    border-radius:10px;
+    cursor:pointer;
+    margin-bottom:15px;
 }
 
-.sportOption p {
-  margin-bottom: 0;
-  color: #526575;
+.bookingForm{
+    display:grid;
+    gap:12px;
+    margin:20px 0;
 }
 
-.comingSoon {
-  opacity: 0.55;
-  cursor: not-allowed;
+.bookingForm input{
+    padding:15px;
+    border-radius:10px;
+    border:1px solid #d8d8d8;
 }
 
-@media screen and (max-width: 900px) {
-  .sportOptions {
-    grid-template-columns: 1fr;
-  }
-}
-  .sportLanding {
-  max-width: 900px;
-  margin: 0 auto;
-}
-
-.sportOptions {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 22px;
-  margin-top: 20px;
+.bookingForm button{
+    background:#00b050;
+    color:white;
+    border:none;
+    padding:15px;
+    border-radius:10px;
+    cursor:pointer;
+    font-weight:bold;
 }
 
-.sportOption {
-  background: white;
-  color: #061b33;
-  border-radius: 18px;
-  padding: 30px 20px;
-  text-align: center;
-  cursor: pointer;
-  transition: 0.2s ease;
-  min-height: 210px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+/* ================= PARTICIPANTS ================= */
+
+.player{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:10px;
+    padding:15px;
+    border-radius:12px;
+    color:white;
+    font-weight:bold;
 }
 
-.sportOption:hover {
-  transform: translateY(-5px);
+.confirmed{
+    background:#00b050;
 }
 
-.sportIcon {
-  font-size: 54px;
-  margin-bottom: 12px;
+.waiting,
+.awaiting{
+    background:#f39c12;
 }
 
-.sportOption h2 {
-  margin: 0;
-  font-size: 26px;
-  font-weight: 900;
-  color: #061b33;
+.cancelBtn{
+    background:white;
+    color:#061b33;
+    border:none;
+    border-radius:8px;
+    padding:8px 12px;
+    cursor:pointer;
 }
 
-.sportOption p {
-  margin: 10px 0 0;
-  color: #526575;
-  font-size: 16px;
+/* ================= MOBILE ================= */
+
+@media(max-width:900px){
+
+.hero{
+    flex-direction:column;
+    text-align:center;
 }
 
-.comingSoon {
-  opacity: 0.55;
-  cursor: not-allowed;
+.heroText{
+    border:none;
+    padding:0;
 }
 
-@media screen and (max-width: 900px) {
-  .sportOptions {
-    grid-template-columns: 1fr;
-  }
+.heroText h1{
+    font-size:34px;
 }
+
+.heroText p{
+    font-size:24px;
 }
+
+.tagline{
+    font-size:22px;
+}
+
+.sportOptions{
+    grid-template-columns:1fr;
+}
+
+.cards{
+    grid-template-columns:1fr;
+}
+
+.cardImg{
+    height:210px;
+}
+
+.cardContent{
+    grid-template-columns:55px 1fr;
+}
+
+.viewTag{
+    grid-column:1/-1;
+    width:100%;
+    margin-top:12px;
+    text-align:center;
+}
+
+.player{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:12px;
+}
+
+.cancelBtn{
+    width:100%;
+}
+
+}
+
