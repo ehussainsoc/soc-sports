@@ -28,28 +28,60 @@
 
     <main>
   <section id="landingPage" class="sportLanding">
-    <h3 class="sectionTitle">Choose a Sport</h3>
+  <h3 class="sectionTitle">Choose a Sport</h3>
 
-    <div class="sportOptions">
-      <div class="sportOption" onclick="showFootball()">
-        <div class="sportIcon">⚽</div>
-        <h2>Football</h2>
-        <p>Men’s and Women’s sessions</p>
-      </div>
+  <div class="sportOptions">
 
-      <div class="sportOption" onclick="showBadminton()">
-        <div class="sportIcon">🏸</div>
-        <h2>Badminton</h2>
-        <p>Coming soon</p>
-      </div>
-
-      <div class="sportOption comingSoon">
-        <div class="sportIcon">🎮</div>
-        <h2>Esports</h2>
-        <p>Coming soon</p>
+    <div class="sportTile activeSport" onclick="showFootball()">
+      <img src="footballtile.png" class="sportTileImg">
+      <div class="sportTileContent">
+        <div class="sportCircle">⚽</div>
+        <div>
+          <h2>Football</h2>
+          <p>Men’s & Women’s sessions</p>
+        </div>
+        <span class="sportArrow">→</span>
       </div>
     </div>
-  </section>
+
+    <div class="sportTile lockedSport" onclick="showBadminton()">
+      <img src="badmintontile.png" class="sportTileImg">
+      <div class="sportTileContent">
+        <div class="sportCircle">🏸</div>
+        <div>
+          <h2>Badminton</h2>
+          <p>Coming soon</p>
+        </div>
+        <span class="sportLock">🔒</span>
+      </div>
+    </div>
+
+    <div class="sportTile lockedSport">
+      <img src="esportstile.png" class="sportTileImg">
+      <div class="sportTileContent">
+        <div class="sportCircle">🎮</div>
+        <div>
+          <h2>Esports</h2>
+          <p>Coming soon</p>
+        </div>
+        <span class="sportLock">🔒</span>
+      </div>
+    </div>
+
+    <div class="sportTile lockedSport">
+      <img src="padeltile.png" class="sportTileImg">
+      <div class="sportTileContent">
+        <div class="sportCircle">🎾</div>
+        <div>
+          <h2>Padel</h2>
+          <p>Coming soon</p>
+        </div>
+        <span class="sportLock">🔒</span>
+      </div>
+    </div>
+
+  </div>
+</section>
 
   <section id="footballPage" class="hidden">
     <button class="backBtn" onclick="backToLanding()">← Back to sports</button>
