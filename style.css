@@ -228,4 +228,49 @@ input {
     margin-top: 12px;
     padding: 16px;
   }
+  .sportLanding {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.sportOptions {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+
+.sportOption {
+  background: white;
+  color: #061b33;
+  border-radius: 18px;
+  padding: 28px 20px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.sportIcon {
+  font-size: 52px;
+  margin-bottom: 12px;
+}
+
+.sportOption h2 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.sportOption p {
+  margin-bottom: 0;
+  color: #526575;
+}
+
+.comingSoon {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+@media screen and (max-width: 900px) {
+  .sportOptions {
+    grid-template-columns: 1fr;
+  }
+}
 }
