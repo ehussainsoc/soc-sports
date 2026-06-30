@@ -27,35 +27,61 @@
     </div>
 
     <main>
-      <h3 class="sectionTitle">Upcoming Games</h3>
+  <section id="landingPage" class="sportLanding">
+    <h3 class="sectionTitle">Choose a Sport</h3>
 
-      <div id="sports" class="cards"></div>
+    <div class="sportOptions">
+      <div class="sportOption" onclick="showFootball()">
+        <div class="sportIcon">⚽</div>
+        <h2>Football</h2>
+        <p>Men’s and Women’s sessions</p>
+      </div>
 
-      <section id="bookingSection" class="hidden panel">
-        <button class="backBtn" onclick="goBack()">← Back to sports</button>
+      <div class="sportOption" onclick="showBadminton()">
+        <div class="sportIcon">🏸</div>
+        <h2>Badminton</h2>
+        <p>Coming soon</p>
+      </div>
 
-        <div class="sessionHeader">
-          <h2 id="sessionTitle"></h2>
-          <p id="sessionInfo"></p>
-        </div>
+      <div class="sportOption comingSoon">
+        <div class="sportIcon">🎮</div>
+        <h2>Esports</h2>
+        <p>Coming soon</p>
+      </div>
+    </div>
+  </section>
 
-        <form id="bookingForm" class="bookingForm">
-          <h3>Book your place</h3>
-          <input id="name" placeholder="Full name" required />
-          <input id="email" type="email" placeholder="Email address" required />
-          <input id="phone" placeholder="Phone number" required />
-          <button type="submit">Confirm Booking</button>
-        </form>
+  <section id="footballPage" class="hidden">
+    <button class="backBtn" onclick="backToLanding()">← Back to sports</button>
+    <h3 class="sectionTitle">Upcoming Football Games</h3>
+    <div id="sports" class="cards"></div>
+  </section>
 
-        <div class="legend">
-          <span><b class="dot green"></b> Confirmed</span>
-          <span><b class="dot orange"></b> Waiting list / Awaiting numbers</span>
-        </div>
+  <section id="bookingSection" class="hidden panel">
+    <button class="backBtn" onclick="goBack()">← Back to football</button>
 
-        <h3>Participants</h3>
-        <div id="participants"></div>
-      </section>
-    </main>
+    <div class="sessionHeader">
+      <h2 id="sessionTitle"></h2>
+      <p id="sessionInfo"></p>
+    </div>
+
+    <form id="bookingForm" class="bookingForm">
+      <h3>Book your place</h3>
+      <input id="name" placeholder="Full name" required />
+      <input id="email" type="email" placeholder="Email address" required />
+      <input id="phone" placeholder="Phone number" required />
+      <button type="submit">Confirm Booking</button>
+    </form>
+
+    <div class="legend">
+      <span><b class="dot green"></b> Confirmed</span>
+      <span><b class="dot orange"></b> Waiting list / Awaiting numbers</span>
+    </div>
+
+    <h3>Participants</h3>
+    <div id="participants"></div>
+  </section>
+</main>
   </div>
 
   <script src="script.js"></script>
