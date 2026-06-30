@@ -2,19 +2,38 @@
     box-sizing:border-box;
 }
 
-body {
-  margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-  color: white;
-  min-height: 100vh;
+body{
+    margin:0;
+    font-family:Arial,Helvetica,sans-serif;
+    color:white;
+    min-height:100vh;
+    overflow-x:hidden;
+    position:relative;
+    background:#0b2d4a;
+}
 
-  background:
-    linear-gradient(rgba(8,25,45,.82), rgba(8,25,45,.82)),
-    url("background.jpg");
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
 
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
+    background:url("background.jpg") center center/cover no-repeat;
+
+    opacity:.15;
+
+    z-index:-2;
+}
+
+body::after{
+    content:"";
+    position:fixed;
+    inset:0;
+
+    background:linear-gradient(135deg,#0b2d4a,#061b33);
+
+    opacity:.92;
+
+    z-index:-1;
 }
 
 .app{
