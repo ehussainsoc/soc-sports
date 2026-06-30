@@ -184,7 +184,23 @@ document.getElementById("bookingForm").addEventListener("submit", async e => {
   loadParticipants();
 });
 
-function goBack() {
-  document.getElementById("sports").style.display = "grid";
+function showFootball() {
+  document.getElementById("landingPage").classList.add("hidden");
+  document.getElementById("footballPage").classList.remove("hidden");
+  loadSessions();
+}
+
+function showBadminton() {
+  alert("Badminton bookings are coming soon.");
+}
+
+function backToLanding() {
+  document.getElementById("footballPage").classList.add("hidden");
   document.getElementById("bookingSection").classList.add("hidden");
+  document.getElementById("landingPage").classList.remove("hidden");
+}
+
+function goBack() {
+  document.getElementById("bookingSection").classList.add("hidden");
+  document.getElementById("footballPage").classList.remove("hidden");
 }
