@@ -40,7 +40,7 @@ async function loadSessions() {
 async function openSession(id) {
   currentSession = id;
 
-  document.getElementById("sports").style.display = "none";
+  document.getElementById("footballPage").classList.add("hidden");
   document.getElementById("bookingSection").classList.remove("hidden");
 
   const { data: session } = await supabaseClient
@@ -200,5 +200,6 @@ function backToLanding() {
 
 function goBack() {
   document.getElementById("bookingSection").classList.add("hidden");
-  document.getElementById("footballPage").classList.remove("hidden");
+  document.getElementById("landingPage").classList.remove("hidden");
+  document.getElementById("footballPage").classList.add("hidden");
 }
