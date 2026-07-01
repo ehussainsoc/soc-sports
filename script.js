@@ -199,7 +199,16 @@ function backToLanding() {
 }
 
 function goBack() {
-  document.getElementById("bookingSection").classList.add("hidden");
-  document.getElementById("landingPage").classList.remove("hidden");
+
+  // If currently viewing a booking session
+  if (!document.getElementById("bookingSection").classList.contains("hidden")) {
+
+    document.getElementById("bookingSection").classList.add("hidden");
+    document.getElementById("footballPage").classList.remove("hidden");
+    return;
+  }
+
+  // Otherwise go back to landing page
   document.getElementById("footballPage").classList.add("hidden");
+  document.getElementById("landingPage").classList.remove("hidden");
 }
