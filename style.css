@@ -303,8 +303,11 @@ body{
 @media(max-width:900px){
 
 .hero{
-    flex-direction:column;
-    text-align:center;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    width:100%;
+    margin-bottom:20px;
 }
 
 .heroText{
