@@ -44,17 +44,17 @@ body::after{
 
 /* ================= HERO ================= */
 
-.hero{
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    gap:16px;
-    margin-bottom:12px;
+.hero {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 18px;
 }
 
-.logoImg{
-    width:45px;
-    height:auto;
+.logoImg {
+    width: 420px;
+    max-width: 80%;
+    height: auto;
+    display: block;
 }
 
 .heroText{
