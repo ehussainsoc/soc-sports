@@ -8,32 +8,18 @@ body{
     color:white;
     min-height:100vh;
     overflow-x:hidden;
-    position:relative;
-    background:#0b2d4a;
-}
 
-body::before{
-    content:"";
-    position:fixed;
-    inset:0;
+    background:
+        linear-gradient(
+            rgba(5,22,40,.55),
+            rgba(5,22,40,.80)
+        ),
+        url("background.jpg");
 
-    background:url("background.jpg") center center/cover no-repeat;
-
-    opacity:.15;
-
-    z-index:-2;
-}
-
-body::after{
-    content:"";
-    position:fixed;
-    inset:0;
-
-    background:linear-gradient(135deg,#0b2d4a,#061b33);
-
-    opacity:.92;
-
-    z-index:-1;
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+    background-attachment:fixed;
 }
 
 .app{
@@ -99,8 +85,10 @@ body::after{
   margin-top: 20px;
 }
 
-.sportTile {
-  background: white;
+.sportTile{
+    background:rgba(255,255,255,.94);
+    backdrop-filter:blur(8px);
+
   color: #061b33;
   border-radius: 18px;
   overflow: hidden;
@@ -190,7 +178,8 @@ body::after{
 }
 
 .card{
-    background:#fff;
+    background:rgba(255,255,255,.95);
+    backdrop-filter:blur(10px);
     border-radius:18px;
     overflow:hidden;
     color:#061b33;
