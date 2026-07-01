@@ -9,10 +9,7 @@ body{
     min-height:100vh;
     overflow-x:hidden;
 
-    background:
-        linear-gradient(rgba(6,27,51,.72), rgba(6,27,51,.82)),
-        url("background1.png");
-
+    background-image:url("background.jpg");
     background-size:cover;
     background-position:center;
     background-repeat:no-repeat;
