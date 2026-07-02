@@ -333,15 +333,17 @@ body{
 }
 
 .footerInfo{
-    color:rgba(255,255,255,.75);
-    line-height:1.4;
-    font-size:14px;
+    color: rgba(255,255,255,.75);
+    line-height: 1.1;   /* was probably 1.4 */
+    font-size: 14px;
 }
 
 .footerInfo strong{
     display:block;
     color:white;
     font-size:15px;
+    margin:0;
+    padding:0;
 }
 
 /* ================= MOBILE ================= */
