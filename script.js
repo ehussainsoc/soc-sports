@@ -52,7 +52,10 @@ async function openSession(id) {
   const ukDate = new Date(session.game_date).toLocaleDateString("en-GB");
 
   document.getElementById("sessionTitle").innerText = session.sport_type;
-  document.getElementById("sessionInfo").innerText = `${ukDate} at ${session.game_time}`;
+  document.getElementById("sessionInfo").innerHTML = `
+📅 ${ukDate} • 6:00 PM<br>
+📍 31 Watson Rd, Nechells, Birmingham B7 5SA
+`;
 
   loadParticipants();
 }
