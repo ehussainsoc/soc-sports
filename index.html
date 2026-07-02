@@ -9,111 +9,102 @@
 </head>
 
 <body>
-  <div class="background"></div>
-
   <div class="app">
 
     <div class="hero">
-    <img src="SOCsportslogo.png" class="logoImg" alt="SOC Sports">
-</div>
+      <img src="SOCsportslogo.png" class="logoImg" alt="SOC Sports">
+    </div>
 
     <div class="tagline">
       Play together. Stay active. <strong>Build connections.</strong>
     </div>
 
     <main>
-  <section id="landingPage" class="sportLanding">
-  <h3 class="sectionTitle">Choose a Sport</h3>
+      <section id="landingPage" class="sportLanding">
+        <h3 class="sectionTitle">Choose a Sport</h3>
 
-  <div class="sportOptions">
+        <div class="sportOptions">
+          <div class="sportTile activeSport" onclick="showFootball()">
+            <img src="footballtile.png" class="sportTileImg">
+            <div class="sportTileContent">
+              <div class="sportCircle">⚽</div>
+              <div>
+                <h2>Football</h2>
+                <p>Men’s & Women’s sessions</p>
+              </div>
+              <span class="sportArrow">→</span>
+            </div>
+          </div>
 
-    <div class="sportTile activeSport" onclick="showFootball()">
-      <img src="footballtile.png" class="sportTileImg">
-      <div class="sportTileContent">
-        <div class="sportCircle">⚽</div>
-        <div>
-          <h2>Football</h2>
-          <p>Men’s & Women’s sessions</p>
+          <div class="sportTile lockedSport" onclick="showBadminton()">
+            <img src="badmintontile.png" class="sportTileImg">
+            <div class="sportTileContent">
+              <div class="sportCircle">🏸</div>
+              <div>
+                <h2>Badminton</h2>
+                <p>Coming soon</p>
+              </div>
+              <span class="sportLock">🔒</span>
+            </div>
+          </div>
+
+          <div class="sportTile lockedSport">
+            <img src="esportstile.png" class="sportTileImg">
+            <div class="sportTileContent">
+              <div class="sportCircle">🎮</div>
+              <div>
+                <h2>Esports</h2>
+                <p>Coming soon</p>
+              </div>
+              <span class="sportLock">🔒</span>
+            </div>
+          </div>
+
+          <div class="sportTile lockedSport">
+            <img src="padeltile.png" class="sportTileImg">
+            <div class="sportTileContent">
+              <div class="sportCircle">🎾</div>
+              <div>
+                <h2>Padel</h2>
+                <p>Coming soon</p>
+              </div>
+              <span class="sportLock">🔒</span>
+            </div>
+          </div>
         </div>
-        <span class="sportArrow">→</span>
-      </div>
-    </div>
+      </section>
 
-    <div class="sportTile lockedSport" onclick="showBadminton()">
-      <img src="badmintontile.png" class="sportTileImg">
-      <div class="sportTileContent">
-        <div class="sportCircle">🏸</div>
-        <div>
-          <h2>Badminton</h2>
-          <p>Coming soon</p>
+      <section id="footballPage" class="hidden">
+        <button class="backBtn" onclick="goBack()">← Back to Sports</button>
+        <h3 class="sectionTitle">Upcoming Football Games</h3>
+        <div id="sports" class="cards"></div>
+      </section>
+
+      <section id="bookingSection" class="hidden panel">
+        <button class="backBtn" onclick="backToLanding()">← Back to Sports</button>
+
+        <div class="sessionHeader">
+          <h2 id="sessionTitle"></h2>
+          <p id="sessionInfo"></p>
         </div>
-        <span class="sportLock">🔒</span>
-      </div>
-    </div>
 
-    <div class="sportTile lockedSport">
-      <img src="esportstile.png" class="sportTileImg">
-      <div class="sportTileContent">
-        <div class="sportCircle">🎮</div>
-        <div>
-          <h2>Esports</h2>
-          <p>Coming soon</p>
+        <form id="bookingForm" class="bookingForm">
+          <h3>Book your place</h3>
+          <input id="name" placeholder="Full name" required />
+          <input id="email" type="email" placeholder="Email address" required />
+          <input id="phone" placeholder="Phone number" required />
+          <button type="submit">Confirm Booking</button>
+        </form>
+
+        <div class="legend">
+          <span><b class="dot green"></b> Confirmed</span>
+          <span><b class="dot orange"></b> Waiting list / Awaiting numbers</span>
         </div>
-        <span class="sportLock">🔒</span>
-      </div>
-    </div>
 
-    <div class="sportTile lockedSport">
-      <img src="padeltile.png" class="sportTileImg">
-      <div class="sportTileContent">
-        <div class="sportCircle">🎾</div>
-        <div>
-          <h2>Padel</h2>
-          <p>Coming soon</p>
-        </div>
-        <span class="sportLock">🔒</span>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-  <section id="footballPage" class="hidden">
-    <button class="backBtn" onclick="goBack()">← Back</button>
-    <h3 class="sectionTitle">Upcoming Football Games</h3>
-    <div id="sports" class="cards"></div>
-  </section>
-
-  <section id="bookingSection" class="hidden panel">
-<button class="backBtn" onclick="backToLanding()">
-    ← Back to Sports
-</button>
-
-<section id="bookingSection" class="hidden panel">
-  <button class="backBtn" onclick="backToLanding()">← Back to Sports</button>
-
-  <div class="sessionHeader">
-    <h2 id="sessionTitle"></h2>
-    <p id="sessionInfo"></p>
-  </div>
-
-  <form id="bookingForm" class="bookingForm">
-    <h3>Book your place</h3>
-    <input id="name" placeholder="Full name" required />
-    <input id="email" type="email" placeholder="Email address" required />
-    <input id="phone" placeholder="Phone number" required />
-    <button type="submit">Confirm Booking</button>
-  </form>
-
-  <div class="legend">
-    <span><b class="dot green"></b> Confirmed</span>
-    <span><b class="dot orange"></b> Waiting list / Awaiting numbers</span>
-  </div>
-
-  <h3>Participants</h3>
-  <div id="participants"></div>
-</section>
-</main>
+        <h3>Participants</h3>
+        <div id="participants"></div>
+      </section>
+    </main>
   </div>
 
   <script src="script.js"></script>
