@@ -314,6 +314,35 @@ body{
 .footer a:hover{
     text-decoration:underline;
 }
+.bottomFooter{
+    margin-top:18px;
+    padding:18px 30px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:20px;
+
+    background:rgba(0,0,0,.22);
+    border-top:1px solid rgba(255,255,255,.12);
+}
+
+.footerLogo{
+    width:55px;
+    height:auto;
+}
+
+.footerInfo{
+    color:rgba(255,255,255,.75);
+    line-height:1.4;
+    font-size:14px;
+}
+
+.footerInfo strong{
+    display:block;
+    color:white;
+    font-size:15px;
+}
 
 /* ================= MOBILE ================= */
 
