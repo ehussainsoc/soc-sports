@@ -193,9 +193,11 @@ function showBadminton() {
 }
 
 function backToLanding() {
-  document.getElementById("footballPage").classList.add("hidden");
-  document.getElementById("bookingSection").classList.add("hidden");
-  document.getElementById("landingPage").classList.remove("hidden");
+
+    document.getElementById("bookingSection").classList.add("hidden");
+    document.getElementById("footballPage").classList.add("hidden");
+    document.getElementById("landingPage").classList.remove("hidden");
+
 }
 
 function goBack() {
