@@ -89,34 +89,30 @@
     ← Back to Sports
 </button>
 
-<div class="sessionHeader">
+<section id="bookingSection" class="hidden panel">
+  <button class="backBtn" onclick="backToLanding()">← Back to Sports</button>
+
+  <div class="sessionHeader">
     <h2 id="sessionTitle"></h2>
     <p id="sessionInfo"></p>
-</div>
-    
-    
+  </div>
 
-    <div class="sessionHeader">
-      <h2 id="sessionTitle"></h2>
-      <p id="sessionInfo"></p>
-    </div>
+  <form id="bookingForm" class="bookingForm">
+    <h3>Book your place</h3>
+    <input id="name" placeholder="Full name" required />
+    <input id="email" type="email" placeholder="Email address" required />
+    <input id="phone" placeholder="Phone number" required />
+    <button type="submit">Confirm Booking</button>
+  </form>
 
-    <form id="bookingForm" class="bookingForm">
-      <h3>Book your place</h3>
-      <input id="name" placeholder="Full name" required />
-      <input id="email" type="email" placeholder="Email address" required />
-      <input id="phone" placeholder="Phone number" required />
-      <button type="submit">Confirm Booking</button>
-    </form>
+  <div class="legend">
+    <span><b class="dot green"></b> Confirmed</span>
+    <span><b class="dot orange"></b> Waiting list / Awaiting numbers</span>
+  </div>
 
-    <div class="legend">
-      <span><b class="dot green"></b> Confirmed</span>
-      <span><b class="dot orange"></b> Waiting list / Awaiting numbers</span>
-    </div>
-
-    <h3>Participants</h3>
-    <div id="participants"></div>
-  </section>
+  <h3>Participants</h3>
+  <div id="participants"></div>
+</section>
 </main>
   </div>
 
