@@ -148,6 +148,61 @@ body{
   cursor: not-allowed;
 }
 
+.sessionStats{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:12px;
+    margin:18px 0;
+}
+
+.sessionStats div{
+    background:#f5f7fa;
+    padding:15px;
+    border-radius:12px;
+    text-align:center;
+}
+
+.sessionStats strong{
+    font-size:24px;
+    color:#00b050;
+}
+
+.sessionStats p{
+    grid-column:1/-1;
+    background:#eef6ff;
+    padding:12px;
+    border-radius:10px;
+    margin:0;
+    font-weight:700;
+}
+
+.countdownBox,
+.weatherBox{
+    background:#f5f7fa;
+    padding:14px;
+    border-radius:12px;
+    margin:12px 0;
+    font-weight:700;
+}
+
+.mapsBtn{
+    display:block;
+    background:#061b33;
+    color:white;
+    text-decoration:none;
+    text-align:center;
+    padding:14px;
+    border-radius:12px;
+    font-weight:800;
+    margin:12px 0 20px;
+}
+
+@media(max-width:900px){
+    .sessionStats{
+        grid-template-columns:1fr;
+    }
+}
+
 @media(max-width: 900px) {
   .sportOptions {
     grid-template-columns: 1fr;
