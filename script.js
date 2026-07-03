@@ -58,6 +58,8 @@ async function openSession(id) {
 `;
 
   loadParticipants();
+  startCountdown(session.game_date, session.game_time);
+loadWeather();
 }
 
 async function loadParticipants() {
@@ -83,6 +85,7 @@ async function loadParticipants() {
   container.innerHTML = "";
 
   let greenLimit = 0;
+ 
 
   if (data.length < 10) greenLimit = 0;
   else if (data.length === 10) greenLimit = 10;
@@ -90,6 +93,29 @@ async function loadParticipants() {
   else if (data.length === 12) greenLimit = 12;
   else if (data.length === 13) greenLimit = 12;
   else if (data.length >= 14) greenLimit = 14;
+
+  const totalPlayers = data.length;
+const confirmedPlayers = Math.min(greenLimit, totalPlayers);
+const waitingPlayers = totalPlayers - confirmedPlayers;
+
+let statsMessage = "";
+
+if (totalPlayers < 10) {
+  statsMessage = `Need ${10 - totalPlayers} more player${10 - totalPlayers === 1 ? "" : "s"} to confirm the game.`;
+} else if (totalPlayers === 11 || totalPlayers === 13) {
+  statsMessage = "Need 1 more player to create even teams.";
+} else if (totalPlayers >= 14) {
+  statsMessage = "Session full. Extra players will join the waiting list.";
+} else {
+  statsMessage = "Game confirmed.";
+}
+
+document.getElementById("sessionStats").innerHTML = `
+  <div><strong>${totalPlayers}/14</strong><br>Players Booked</div>
+  <div><strong>${confirmedPlayers}</strong><br>Confirmed</div>
+  <div><strong>${waitingPlayers}</strong><br>Waiting</div>
+  <p>${statsMessage}</p>
+`;
 
   data.forEach((player, index) => {
     let status = index < greenLimit ? "confirmed" : "waiting";
@@ -216,4 +242,50 @@ function goBack() {
   // Otherwise go back to landing page
   document.getElementById("footballPage").classList.add("hidden");
   document.getElementById("landingPage").classList.remove("hidden");
+}
+
+function startCountdown(gameDate, gameTime) {
+  const countdownBox = document.getElementById("countdownBox");
+
+  function updateCountdown() {
+    const gameDateTime = new Date(`${gameDate}T${gameTime}`);
+    const now = new Date();
+    const diff = gameDateTime - now;
+
+    if (diff <= 0) {
+      countdownBox.innerHTML = "⚽ Match time has started or passed.";
+      return;
+    }
+
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+    const minutes = Math.floor((diff / (1000 * 60)) % 60);
+
+    countdownBox.innerHTML = `
+      ⏳ Kick-off in <strong>${days}d ${hours}h ${minutes}m</strong>
+    `;
+  }
+
+  updateCountdown();
+  setInterval(updateCountdown, 60000);
+}
+
+async function loadWeather() {
+  const weatherBox = document.getElementById("weatherBox");
+
+  try {
+    const response = await fetch(
+      "https://api.open-meteo.com/v1/forecast?latitude=52.4895&longitude=-1.8613&current=temperature_2m,wind_speed_10m,weather_code"
+    );
+
+    const weather = await response.json();
+
+    weatherBox.innerHTML = `
+      🌤️ Weather near venue:
+      <strong>${weather.current.temperature_2m}°C</strong>,
+      wind ${weather.current.wind_speed_10m} km/h
+    `;
+  } catch (error) {
+    weatherBox.innerHTML = "Weather unavailable.";
+  }
 }
