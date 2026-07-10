@@ -54,7 +54,7 @@ async function openSession(id) {
   document.getElementById("sessionTitle").innerText = session.sport_type;
   document.getElementById("sessionInfo").innerHTML = `
 📅 ${ukDate} • 6:00 PM<br>
-📍 31 Watson Rd, Nechells, Birmingham B7 5SA
+📍 Aston Uni, Pitch 3, Above car park
 `;
 
   loadParticipants();
