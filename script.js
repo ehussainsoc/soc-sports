@@ -53,7 +53,7 @@ async function openSession(id) {
 
   document.getElementById("sessionTitle").innerText = session.sport_type;
   document.getElementById("sessionInfo").innerHTML = `
-📅 ${ukDate} • 6:00 PM<br>
+📅 ${ukDate} • 5:00 PM<br>
 📍 Aston Uni, Pitch 3, Above car park
 `;
 
